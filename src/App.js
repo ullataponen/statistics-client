@@ -7,6 +7,7 @@ import StatsForm from "./components/StatsForm";
 import moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PropTypes from "prop-types";
 
 function App() {
   const [valuesInMemory, setValuesInMemory] = useState({
@@ -18,7 +19,7 @@ function App() {
       : null,
     tokenFromMemory: window.localStorage.getItem("token")
       ? window.localStorage.getItem("token")
-      : null,
+      : "",
   });
 
   const [searchCriteria, setSearchCriteria] = useState({
@@ -35,8 +36,7 @@ function App() {
       passedCriteria.startDate < minDate ||
       passedCriteria.startDate > maxDate ||
       passedCriteria.endDate < minDate ||
-      passedCriteria.endDate > maxDate ||
-      !passedCriteria.token
+      passedCriteria.endDate > maxDate
     ) {
       toast.error(
         "Start or end date is incorrect, must be between 2017-05-01 and 2017-06-15",
@@ -45,18 +45,18 @@ function App() {
         }
       );
       window.localStorage.clear();
-      setSearchCriteria({
-        startDate: "",
-        endDate: "",
-        token: "",
+      setSearchCriteria({ ...searchCriteria, startDate: "", endDate: "" });
+    } else if (!passedCriteria.token) {
+      toast.error("Token is mandatory", {
+        position: toast.POSITION.BOTTOM_CENTER,
       });
+      setSearchCriteria({ ...searchCriteria, token: "" });
     } else {
       setSearchCriteria({
         startDate: moment(passedCriteria.startDate).format("YYYY-MM-DD"),
         endDate: moment(passedCriteria.endDate).format("YYYY-MM-DD"),
         token: passedCriteria.token,
       });
-      console.log(searchCriteria);
       window.localStorage.setItem(
         "startDate",
         moment(passedCriteria.startDate).format("YYYY-MM-DD")
@@ -93,5 +93,14 @@ function App() {
     </>
   );
 }
+
+App.propTypes = {
+  valuesInMemory: PropTypes.object,
+  searchCriteria: PropTypes.object,
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
+  getAndForwardProps: PropTypes.func,
+  areSearchValuesInput: PropTypes.func,
+};
 
 export default App;

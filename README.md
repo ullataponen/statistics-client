@@ -14,7 +14,7 @@ The application is deployed on Heroku and may be accessed here: [https://statist
 
 Initially the application shows only the form and user input is required for the data to be displayed. User inserts the start and end date and the access token. All fields are mandatory. If the date range is incorrect or the token is missing or incorrect, the app will display an error message temporarily.
 
-When the correct date range and access token are input, the application will send an http request to the REST API to fetch the data. If the fetch is unsuccessful, the application will display an error message temporarily. If the fetch is successful, the user will see the data on the display.
+When the correct date range and access token are input, the application will send an http request to the REST API to fetch the data. If the fetch is unsuccessful, the application will display an error message temporarily. If the fetch is successful, the user will see the data on the display. User's date and access token inputs are saved into the browser's local storage.
 
 ## Who will use this project?
 
@@ -37,3 +37,4 @@ This project's purpose is to use React library to fetch and display REST API dat
   - [Toastify](https://fkhadra.github.io/react-toastify/introduction) for toast messages
   - [Moment](https://momentjs.com/) for date formatting
   - [@date-io/moment](https://github.com/dmtrKovalenko/date-io) as utility for Material UI datepicker
+  - [PropTypes](https://www.npmjs.com/package/prop-types) for type checking

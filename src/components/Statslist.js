@@ -6,50 +6,51 @@ import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TotalCountView from "./TotalCountView";
+import PropTypes from "prop-types";
 
 export default function Statslist({ searchCriteria }) {
   const [stats, setStats] = useState([]);
-  const baseUrl = `https://api.giosg.com/api/reporting/v1/rooms/84e0fefa-5675-11e7-a349-00163efdd8db/chat-stats/daily/`;
+
   const [showData, setShowData] = useState(false);
 
   useEffect(() => {
+    const baseUrl = `https://api.giosg.com/api/reporting/v1/rooms/84e0fefa-5675-11e7-a349-00163efdd8db/chat-stats/daily/`;
+    const fetchStats = async () => {
+      await axios
+        .get(
+          `${baseUrl}?start_date=${searchCriteria.startDate}&end_date=${searchCriteria.endDate}`,
+          {
+            headers: {
+              Authorization: `Bearer ${searchCriteria.token}`,
+            },
+          }
+        )
+        .then((response) => {
+          setShowData(true);
+          setStats(response.data);
+        })
+        .catch((error) => {
+          setShowData(false);
+          if (error.response.status === 401) {
+            toast.error("Incorrect token", {
+              position: toast.POSITION.BOTTOM_CENTER,
+            });
+            console.error(error);
+          } else if (error.response.status === 400) {
+            toast.error(error.response.data.non_field_errors[0], {
+              position: toast.POSITION.BOTTOM_CENTER,
+            });
+            console.error(error);
+          } else {
+            toast.error("Error fetching data", {
+              position: toast.POSITION.BOTTOM_CENTER,
+            });
+            console.error(error);
+          }
+        });
+    };
     fetchStats();
   }, [searchCriteria]);
-
-  const fetchStats = async () => {
-    await axios
-      .get(
-        `${baseUrl}?start_date=${searchCriteria.startDate}&end_date=${searchCriteria.endDate}`,
-        {
-          headers: {
-            Authorization: `Bearer ${searchCriteria.token}`,
-          },
-        }
-      )
-      .then((response) => {
-        setShowData(true);
-        setStats(response.data);
-      })
-      .catch((error) => {
-        setShowData(false);
-        if (error.response.status === 401) {
-          toast.error("Incorrect token", {
-            position: toast.POSITION.BOTTOM_CENTER,
-          });
-          console.error(error);
-        } else if (error.response.status === 400) {
-          toast.error(error.response.data.non_field_errors[0], {
-            position: toast.POSITION.BOTTOM_CENTER,
-          });
-          console.error(error);
-        } else {
-          toast.error("Error fetching data", {
-            position: toast.POSITION.BOTTOM_CENTER,
-          });
-          console.error(error);
-        }
-      });
-  };
 
   const columns = [
     {
@@ -114,3 +115,11 @@ export default function Statslist({ searchCriteria }) {
     </div>
   );
 }
+
+Statslist.propTypes = {
+  baseUrl: PropTypes.string,
+  showData: PropTypes.bool,
+  stats: PropTypes.array,
+  columns: PropTypes.array,
+  fetchStats: PropTypes.func,
+};

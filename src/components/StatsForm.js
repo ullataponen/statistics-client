@@ -7,6 +7,7 @@ import {
 } from "@material-ui/pickers";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 
 export default function StatsForm(props) {
   const [searchCriteria, setSearchCriteria] = useState(props.searchCriteria);
@@ -84,3 +85,13 @@ export default function StatsForm(props) {
     </div>
   );
 }
+
+StatsForm.propTypes = {
+  startDate: PropTypes.instanceOf(Date),
+  endDate: PropTypes.instanceOf(Date),
+  token: PropTypes.string,
+  handleStartDateChange: PropTypes.func,
+  handleEndDateChange: PropTypes.func,
+  handleTokenChange: PropTypes.func,
+  fetchWithCriteria: PropTypes.func,
+};
