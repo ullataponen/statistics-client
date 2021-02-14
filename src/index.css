@@ -12,11 +12,11 @@ body {
   padding: 5%;
 }
 
-.container.form > div {
+.container.form .form-grid {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  gap: 5px;
 }
 
 .card-container {
@@ -28,7 +28,7 @@ body {
 }
 
 .container.form button {
-  padding: 5px;
+  padding: 5px 15px;
   height: fit-content;
 }
 
@@ -39,6 +39,7 @@ body {
 .ReactTable {
   margin: 2rem 0;
   font-size: 0.6rem;
+  text-align: center;
 }
 
 .ReactTable .rt-th,
@@ -57,9 +58,15 @@ body {
     width: calc(100% / 2 - 10px);
   }
 
-  .container.form > div {
+  .container.form .form-grid {
     flex-direction: row;
+    align-items: center;
   }
+
+  .form-grid > div {
+    min-width: calc(100% / 2 - 10px);
+  }
+
   .ReactTable {
     font-size: 0.8rem;
   }
@@ -77,12 +84,16 @@ body {
   .card-container > div {
     width: calc(100% / 3 - 10px);
   }
+
+  .form-grid > div {
+    min-width: calc(100% / 4 - 10px);
+  }
 }
 
 /* Large size */
 @media only screen and (min-width: 1200px) {
   .container {
-    padding: 5% 10%;
+    padding: 3rem 10%;
     margin: 0 auto;
     max-width: 1200px;
   }

@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# React Application for displaying statistical data
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React application that utilizes a REST API to display statistical data.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+Project repo may be downloaded from GitHub and copied to local environment. Before use, libraries must be installed with `npm install` or `yarn add` command in the project directory. After installation, project can be started with `npm start` / `yarn start` command.
 
-### `yarn start`
+## Deployed version
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The application is deployed on Heroku and may be accessed here: [https://statistics-client.herokuapp.com/](https://statistics-client.herokuapp.com/). No username or password is required for accessing the page but data can only be fetched with the correct access token.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How does it work?
 
-### `yarn test`
+Initially the application shows only the form and user input is required for the data to be displayed. User inserts the start and end date and the access token. All fields are mandatory. If the date range is incorrect or the token is missing or incorrect, the app will display an error message temporarily.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When the correct date range and access token are input, the application will send an http request to the REST API to fetch the data. If the fetch is unsuccessful, the application will display an error message temporarily. If the fetch is successful, the user will see the data on the display.
 
-### `yarn build`
+## Who will use this project?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Anyone can copy the repository for their own, non-commercial purposes. The creator and repository owner may use the skills learned during this project in future projects.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## What is the goal of this project?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project's purpose is to use React library to fetch and display REST API data on a responsive and easy-to-use UI.
 
-### `yarn eject`
+## Used technologies
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- JavaScript
+- HTML (JSX)
+- CSS (Material UI & stylesheet)
+- Dependencies:
+  - [Axios](https://github.com/axios/axios) for HTTP requests
+  - [React Table v6](https://github.com/tannerlinsley/react-table/tree/v6) for displaying tabular data
+  - [Material UI](https://material-ui.com/) for top banner, input form and button, product cards
+  - [Toastify](https://fkhadra.github.io/react-toastify/introduction) for toast messages
+  - [Moment](https://momentjs.com/) for date formatting
+  - [@date-io/moment](https://github.com/dmtrKovalenko/date-io) as utility for Material UI datepicker

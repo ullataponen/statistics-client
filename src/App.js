@@ -46,8 +46,8 @@ function App() {
       );
       window.localStorage.clear();
       setSearchCriteria({
-        startDate: null,
-        endDate: null,
+        startDate: "",
+        endDate: "",
         token: "",
       });
     } else {

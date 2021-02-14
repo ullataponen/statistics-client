@@ -11,15 +11,6 @@ import Button from "@material-ui/core/Button";
 export default function StatsForm(props) {
   const [searchCriteria, setSearchCriteria] = useState(props.searchCriteria);
 
-  //   const handleChange = (event) => {
-  //     console.log(event);
-
-  //     setSearchCriteria({
-  //       ...searchCriteria,
-  //       [event.target.name]: event.target.value,
-  //     });
-  //   }; moment(date).format("YYYY-MM-DD")
-
   const handleStartDateChange = (date) => {
     setSearchCriteria({
       ...searchCriteria,
@@ -48,7 +39,7 @@ export default function StatsForm(props) {
   return (
     <div className="container form">
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container justify="space-around">
+        <Grid container justify="space-around" className="form-grid">
           <KeyboardDatePicker
             format="yyyy-MM-DD"
             margin="normal"
@@ -74,7 +65,6 @@ export default function StatsForm(props) {
             }}
           />
           <TextField
-            type="password"
             margin="normal"
             id="standard-basic"
             name="token"

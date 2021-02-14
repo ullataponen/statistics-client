@@ -102,10 +102,10 @@ export default function Statslist({ searchCriteria }) {
           <ReactTable
             pageSize={5}
             showPageSizeOptions={false}
-            filterable
             sortable
             data={stats.by_date}
             columns={columns}
+            className="-striped -highlight"
           />
         </>
       ) : (

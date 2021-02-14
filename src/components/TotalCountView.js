@@ -5,6 +5,9 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
+  root: {
+    textAlign: "center",
+  },
   header: {
     fontSize: "3rem",
   },
@@ -15,7 +18,7 @@ const useStyles = makeStyles({
 
 export default function TotalCountView({ stat }) {
   const classes = useStyles();
-  if (stat.title) stat.title = stat.title.replace(/\_/g, " ");
+  if (stat.title) stat.title = stat.title.replace(/_/g, " ");
 
   return (
     <Card variant="outlined" className={classes.root}>
