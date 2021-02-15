@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TotalCountView from "./TotalCountView";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
 export default function Statslist({ searchCriteria }) {
   const [stats, setStats] = useState([]);
@@ -80,7 +81,12 @@ export default function Statslist({ searchCriteria }) {
       <ToastContainer autoClose={3000} />
       {showData ? (
         <>
-          <div className="card-container">
+          <motion.div
+            className="card-container"
+            initial={{ opacity: 0, x: 1000 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 2 }}
+          >
             <TotalCountView
               stat={{
                 title: Object.keys(stats)[10],
@@ -99,15 +105,21 @@ export default function Statslist({ searchCriteria }) {
                 value: Object.values(stats)[12],
               }}
             />
-          </div>
-          <ReactTable
-            pageSize={5}
-            showPageSizeOptions={false}
-            sortable
-            data={stats.by_date}
-            columns={columns}
-            className="-striped -highlight"
-          />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -1000 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 2 }}
+          >
+            <ReactTable
+              pageSize={5}
+              showPageSizeOptions={false}
+              sortable
+              data={stats.by_date}
+              columns={columns}
+              className="-striped -highlight"
+            />
+          </motion.div>
         </>
       ) : (
         <></>

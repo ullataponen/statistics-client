@@ -38,3 +38,4 @@ This project's purpose is to use React library to fetch and display REST API dat
   - [Moment](https://momentjs.com/) for date formatting
   - [@date-io/moment](https://github.com/dmtrKovalenko/date-io) as utility for Material UI datepicker
   - [PropTypes](https://www.npmjs.com/package/prop-types) for type checking
+  - [Framer Motion](https://www.framer.com/motion/) for animations
