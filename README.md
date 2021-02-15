@@ -22,7 +22,7 @@ Anyone can copy the repository for their own, non-commercial purposes. The creat
 
 ## What is the goal of this project?
 
-This project's purpose is to use React library to fetch and display REST API data on a responsive and easy-to-use UI.
+This project's purpose is to practice using React library to fetch and display REST API data on a responsive and easy-to-use UI.
 
 ## Used technologies
 
