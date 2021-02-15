@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  padding: 5%;
+  padding: 2rem 5%;
 }
 
 .container.form .form-grid {
@@ -19,25 +19,28 @@ body {
   gap: 5px;
 }
 
-.card-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0 auto;
-  gap: 5px;
-}
-
 .container.form button {
   padding: 5px 15px;
   height: fit-content;
 }
 
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  gap: 15px;
+}
+
 .card-container > div {
   width: 100%;
+  background-color: #ce03e3;
+  color: #fff;
+  box-shadow: 10px -10px #840192;
 }
 
 .ReactTable {
-  margin: 2rem 0;
+  margin: 4rem 0;
   font-size: 0.6rem;
   text-align: center;
 }
@@ -45,6 +48,20 @@ body {
 .ReactTable .rt-th,
 .ReactTable .rt-td {
   white-space: normal !important;
+}
+
+.ReactTable .rt-thead.-header {
+  background-color: #f63076;
+  color: #fff;
+  font-weight: bold;
+}
+
+.ReactTable .-pagination .-btn {
+  background-color: #f63076 !important;
+  color: #fff !important;
+}
+.ReactTable .-pagination .-btn:not([disabled]):hover {
+  background: #f75f95 !important;
 }
 
 /* Small size */
@@ -82,7 +99,7 @@ body {
 /* Medium-Large size */
 @media only screen and (min-width: 1024px) {
   .card-container > div {
-    width: calc(100% / 3 - 10px);
+    width: calc(100% / 3 - 12px);
   }
 
   .form-grid > div {

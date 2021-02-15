@@ -6,6 +6,8 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 
@@ -52,6 +54,7 @@ export default function StatsForm(props) {
             KeyboardButtonProps={{
               "aria-label": "change start date",
             }}
+            InputAdornmentProps={{ position: "start" }}
           />
           <KeyboardDatePicker
             format="yyyy-MM-DD"
@@ -64,6 +67,7 @@ export default function StatsForm(props) {
             KeyboardButtonProps={{
               "aria-label": "change end date",
             }}
+            InputAdornmentProps={{ position: "start" }}
           />
           <TextField
             margin="normal"
@@ -72,6 +76,13 @@ export default function StatsForm(props) {
             label="Access Token"
             value={searchCriteria.token}
             onChange={(e) => handleTokenChange(e)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start" color="action">
+                  <AccountCircle color="action" />
+                </InputAdornment>
+              ),
+            }}
           />
           <Button
             onClick={fetchWithCriteria}
